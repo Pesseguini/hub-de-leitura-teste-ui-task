@@ -33,8 +33,6 @@ describe('Testes End To End do fluxo de cadastro e login', () => {
         cy.get('#account-link').click()
         cy.get('[href="/register.html"]').click()
         cy.cadastrar(nome, email, telefone, senha, senha)
-        
-cy.visit('login.html')
         cy.login(email,senha)
         cy.get('#user-name').should('contain', nome)
 
