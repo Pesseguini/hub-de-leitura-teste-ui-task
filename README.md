@@ -1,54 +1,36 @@
-#Projeto de Testes -  Hub de Leitura
+# Automacao E2E - Cadastro e Login (Cypress)
 
-## Sobre
-Projeto de testes para a aplicação "Hub de Leitura". Este repositório contém a interface e/ou testes automatizados para validação da aplicação.
+Projeto de automacao de testes End-to-End (E2E) desenvolvido para validar o fluxo de cadastro e autenticacao de usuarios em aplicacao web.
 
-## Pré-requisitos
-- Git
-- Node.js (recomendado >= 14)
+## Tecnologias Utilizadas
 
-## Como clonar
-1. Abra o terminal.
-2. Clone o repositório:
-    - git clone <URL-DO-REPOSITORIO>
-3. Acesse a pasta do projeto:
-    - cd <NOME-DO-REPOSITORIO>
+* Cypress: Framework de testes automatizados E2E.
+* JavaScript: Linguagem de programacao dos testes.
+* Faker.js (@faker-js/faker): Geracao de massa de dados dinamicos.
 
-## Instalar dependências
-- Usando npm:
-  - npm install
+## Arquitetura e Boas Praticas
 
+* Custom Commands (`commands.js`): Abstracao e reutilizacao de acoes repetitivas (preenchimento de cadastro e login).
+* Massa de Dados Dinamica: Utilizacao de dados aleatorios para garantir independencia nos testes e evitar falhas por duplicidade de cadastro.
+* Assercoes (Assertions): Validacao de login com sucesso através da verificacao do elemento da interface contendo o nome do usuario.
 
-## Executar em desenvolvimento
-- npm run dev
-ou
-- npm start
-(A opção exata depende dos scripts definidos em package.json; verifique-os se necessário.)
+## Cenarios Cobertos
 
-Abra o navegador em http://localhost:3000 (ou a porta indicada no terminal).
+* Fluxo completo de navegacao ate a tela de registro.
+* Cadastro de novo usuario utilizando dados gerados em tempo de execucao.
+* Autenticacao com as credenciais recem-criadas.
+* Validacao do estado logado na aplicacao.
 
-## Rodar testes
-- Testes unitários:
-  - npm test
-- Testes end-to-end (se houver, ex.: Cypress):
-  - npx cypress open
-  - npx cypress run
+## Como Executar o Projeto
 
-Verifique os scripts em package.json para nomes específicos (por exemplo, test:unit, test:e2e).
+1. Clone o repositorio:
+   git clone https://github.com/Pesseguini/hub-de-leitura-teste-ui-task.git
 
-## Build para produção
-- npm run build
+2. Instale as dependencias:
+   npm install
 
-Os artefatos serão gerados na pasta indicada pelo projeto (ex.: dist, build).
+3. Execute os testes no modo interativo do Cypress:
+   npx cypress open
 
-## Variáveis de ambiente
-Se houver um arquivo exemplo (.env.example), copie para .env e ajuste conforme necessário:
-- cp .env.example .env
-
-## Contribuição
-- Abra issues para bugs ou melhorias.
-- Envie pull requests com descrições claras das mudanças.
-
-## Ajuda / Problemas comuns
-- Atualize dependências: rm -rf node_modules && npm install
-- Verifique a versão do Node.js se algum pacote não compilar.
+4. Execute os testes no modo headless (terminal):
+   npx cypress run
