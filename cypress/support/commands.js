@@ -25,9 +25,22 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('login', (email, senha) => { 
+    cy.visit('login.html')
     cy.get('#email').type(email, {log: false})
     cy.get('#password').type(senha, {log: false})
     cy.get('#login-btn').click()
     cy.url().should('include', 'dashboard')
  })
 
+ Cypress.Commands.add('cadastrar', (nome, email, telefone, senha) => {
+    cy.get('#name').type(nome)
+    cy.get('#email').type(email)
+    cy.get('#phone').type(telefone)
+    cy.get('#password').type(senha,{log: false})
+    cy.get('#confirm-password').type(senha,{log: false}) 
+     cy.get('#terms-agreement').check()
+        cy.get('#register-btn').click()       
+        cy.url().should('include', '/dashboard.html')
+        cy.get('#user-name').should('contain', nome)    
+
+})
